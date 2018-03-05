@@ -14,16 +14,17 @@ twilio_client = TwilioClient(
 
 
 def send_twilio_reminder():
-    # Logging
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print("{}: Sent 1 message".format(timestamp))
-
     # Send message
     twilio_client.messages.create(
         to=settings.RECIPIENT_PHONE_NUMBER,
         from_=settings.SENDER_PHONE_NUMBER,
         body=settings.MESSAGE
     )
+
+    # Logging
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print("{}: Sent 1 message".format(timestamp))
+
 
 
 if __name__ == '__main__':
